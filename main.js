@@ -1,0 +1,170 @@
+// MENU //
+const toggle = document.getElementById('nav-toggle');
+const menu = document.getElementById('nav-menu');
+const links = document.querySelectorAll('.nav__link');
+
+const overlay = document.createElement('div');
+overlay.className = 'nav__overlay';
+document.body.appendChild(overlay);
+
+function setMenu(open) {
+  if (open) {
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden', 'false');
+    toggle.textContent = '✕';
+    toggle.setAttribute('aria-label', 'Cerrar menú');
+    toggle.setAttribute('aria-expanded', 'true');
+    overlay.classList.add('visible');
+  } else {
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+    toggle.textContent = '☰';
+    toggle.setAttribute('aria-label', 'Abrir menú');
+    toggle.setAttribute('aria-expanded', 'false');
+    overlay.classList.remove('visible');
+  }
+}
+
+toggle.addEventListener('click', () => {
+  const isOpen = menu.classList.contains('open');
+  setMenu(!isOpen);
+});
+
+links.forEach(link => {
+  link.addEventListener('click', () => setMenu(false));
+});
+
+overlay.addEventListener('click', () => setMenu(false));
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setMenu(false);
+});
+
+const mq = window.matchMedia('(min-width: 768px)');
+mq.addEventListener('change', (e) => {
+  if (e.matches) setMenu(false);
+});
+
+// LANDING LOAD EFFECT INDEX.html //
+window.addEventListener("load", () => {
+  document.querySelector(".landing").classList.add("visible");
+});
+
+// CONTAINERS EFFECT SCROLL //
+const items = document.querySelectorAll(".single-highlight");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const index = [...items].indexOf(entry.target);
+        entry.target.style.transitionDelay = `${index * 0.10}s`;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.2 }
+);
+
+items.forEach((item) => observer.observe(item));
+
+// EFECTO ENTRADA BARRIDO SERVICIO 1 //
+document.addEventListener("DOMContentLoaded", () => {
+
+  const firstElements = document.querySelectorAll(".first");
+
+  if (firstElements.length === 0) return;
+
+  // 👉 1. Animar el PRIMER elemento al cargar la página
+  const firstOnLoad = firstElements[0];
+  firstOnLoad.classList.add("visible");
+
+  // 👉 2. Animar los demás solo con scroll (viewport)
+  const others = Array.from(firstElements).slice(1);
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15 // se anima cuando el 15% aparece en pantalla
+  });
+
+  others.forEach(el => observer.observe(el));
+
+});
+
+// EFECTO ENTRADA BARRIDO SERVICIO 2 //
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".second");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15
+  });
+
+  elements.forEach(el => observer.observe(el));
+});
+
+// EFECTO APARCION ABOUT.html //
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".about-main").classList.add("show");
+});
+
+// EFECTO CREDENTIALS SCROLL //
+document.addEventListener("DOMContentLoaded", () => {
+  const target = document.querySelector(".credentials");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target); // se activa solo una vez
+      }
+    });
+  });
+
+  if (target) observer.observe(target);
+});
+
+// EFECTO SINGLE-VALUE //
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".single-value");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  items.forEach((item, index) => {
+    item.style.transitionDelay = `${index * 0.2}s`; 
+    observer.observe(item);
+  });
+});
+
+// CALENDAR //
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "consulta", {origin:"https://app.cal.com"});
+
+Cal.ns.consulta("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+
+
+
+
+
