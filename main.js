@@ -164,6 +164,77 @@ Cal("init", "consulta", {origin:"https://app.cal.com"});
 
 Cal.ns.consulta("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 
+// MAP //
+const lat = -2.1574252;
+const lng = -79.9051;
+
+const map = L.map("map").setView([lat, lng], 13);
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+}).addTo(map);
+
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const mapsURL = isIOS
+    ? `http://maps.apple.com/?daddr=${lat},${lng}`
+    : `https://www.google.com/maps?q=${lat},${lng}`;
+
+L.marker([lat, lng])
+    .addTo(map)
+    .bindPopup(`
+    <b style="font-weight: bold;">Consultorio</b><br>
+    C. 15 N-O 208, Guayaquil<br>
+    <a href="${mapsURL}" target="_blank" 
+        style="color:#0077cc; text-decoration:underline;">
+        Cómo llegar
+    </a>
+    `)
+    .openPopup();
+
+// BLOG //
+function toggleTag(tag) {
+  const isAll = tag.dataset.filter === "all";
+
+  if (isAll) {
+      document.querySelectorAll(".tag").forEach(t => t.classList.remove("active"));
+      tag.classList.add("active");
+  } else {
+      document.querySelector('.tag[data-filter="all"]').classList.remove("active");
+
+      tag.classList.toggle("active");
+  }
+
+  filterPosts();
+}
+
+function filterPosts() {
+  const activeTags = [...document.querySelectorAll(".tag.active")]
+    .map(tag => tag.dataset.filter);
+
+  const posts = document.querySelectorAll(".post");
+
+  if (activeTags.includes("all") || activeTags.length === 0) {
+    posts.forEach(post => post.style.display = "block");
+    return;
+  }
+
+  posts.forEach(post => {
+    const categories = post.dataset.category.split(" ");
+
+    const matches = activeTags.some(tag => categories.includes(tag));
+
+    post.style.display = matches ? "block" : "none";
+  });
+}
+
+// EFECTO POSTS //
+document.addEventListener("DOMContentLoaded", () => {
+  const posts = document.querySelectorAll(".post");
+
+  posts.forEach((post, index) => {
+    post.style.animationDelay = `${index * 0.2}s`; 
+  });
+});
 
 
 

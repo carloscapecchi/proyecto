@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Carlos Capecchi | Contacto</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
     <header>
@@ -29,7 +31,7 @@
             <p class="contact-subtitle">Agenda tu cita haciendo click en el siguiente botón o completa el formulario.</p>
         </div>
         <div class="schedule">
-            <a class="cta calendar" data-cal-link="carlos-capecchi-gvzhil/consulta" data-cal-namespace="consulta" data-cal-config="{"layout":"month_view"}">Haz click para agendar</a>
+            <a class="cta calendar" data-cal-link="carlos-capecchi-gvzhil/consulta" data-cal-namespace="consulta" data-cal-config="{"layout":"month_view"}">&rarr; Haz click para agendar</a>
         </div>
         <div class="second-container">
             <div>
@@ -75,7 +77,7 @@
             </div>
             <div class="multi-container">
                 <div class="small-container">
-                    <h2 class="cont-title">Información de Contacto</h2>
+                    <h2>Información de Contacto</h2>
                     <p><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                         stroke="#2d4c53" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
                         </svg>(+593) 93-928-3303</p>
@@ -109,12 +111,47 @@
                     <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 17h-2v-11a1 1 0 0 1 1 -1h9v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5" />
                     <path d="M6 10h4m-2 -2v4" /></svg>Soporte de Emergencia</h2>
                     <p>Si estás experimentando una emergencia en salud mental, por favor comunícate con los números de emergencia a nivel nacional.</p>
-                    <p><span style="color: rgb(118, 2, 2); font-weight: 450;"> ECU 911 | Cruz Roja 131 | MSP 171</span></p>
+                    <p><span style="color: #760202; font-weight: 450;"> ECU 911 | Cruz Roja 131 | MSP 171</span></p>
                 </div>
             </div>
         </div>
+
+        <div id="map"></div>
     </main>
 
+    <section class="footer">
+        <div class="footer-container">
+            <div class="quick-links">
+                <p class="footer-title">Enlaces Rápidos</p>
+                <a class="footer-link" href="./index.html">Inicio</a>
+                <a class="footer-link" href="./services.html">Servicios</a>
+                <a class="footer-link" href="./about.html">Acerca de</a>
+                <a class="footer-link" href="./blog.html">Blog</a>
+                <a class="footer-link" href="./contact.html">Contacto</a>
+            </div>
+            <div class="footer-contact">
+                <p class="footer-title">Contacto</p>
+                <a class="footer-link" href="tel:+593939283303"><img src="./images/icons/clear-phone.png" alt="phone">(+593) 93 928 3303</a>
+                <a class="footer-link" href="mailto:carloscapecchi@gmail.com"><img src="./images/icons/clear-mail.png" alt="mail">carloscapecchi@gmail.com</a>
+                <a class="footer-link" href="https://www.google.com/maps/place/Guayaquil/@-2.1521492,-80.1449158,11z/data=!3m1!4b1!4m6!3m5!1s0x902d13cbe855805f:0x8015a492f4fca473!8m2!3d-2.1891341!4d-79.8899031!16zL20vMDFma250?entry=ttu&g_ep=EgoyMDI1MTExNy4wIKXMDSoASAFQAw%3D%3D"><img src="./images/icons/clear-location.png">Guayaquil, Guayas. Ecuador</a>
+            </div>
+            <div class="social-media">
+                <p class="footer-title">Redes Sociales</p>
+                <a class="footer-link" href="https://www.instagram.com/psic.carloscapecchi/"><img src="./images/icons/instagram.png" alt="instagram logo">Instagram</a>
+                <a class="footer-link" href="https://www.facebook.com/psic.carloscapecchi"><img src="./images/icons/facebook.png" alt="facebook logo">Facebook</a>
+                <a class="footer-link" href="https://x.com/psic_capecchi"><img src="./images/icons/twitter.png" alt="twitter logo">Twitter</a>
+                <a class="footer-link" href="https://www.linkedin.com/in/ccapecchi/"><img src="./images/icons/linkedin.png" alt="linkedin logo">LinkedIn</a>
+            </div>
+        </div>
+        <hr />
+        <p class="copyright">© 2025 Carlos Capecchi. Todos los derechos reservados.</p> 
+    </section>
+
+    <section id="whatsapp">
+        <a href="https://wa.me/593939283303">
+            <img class="whatsapp-icon" src="./images/whatsapp.png">
+        </a>
+    </section>
 
     <script src="main.js" defer></script>
 </body>

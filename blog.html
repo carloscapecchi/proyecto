@@ -23,6 +23,67 @@
         </nav>
     </header>
 
+    <main id="title">
+        <h1>Blog y Recursos</h1>
+        <p>Perspectivas, consejos y asesoramiento experto sobre salud mental, relaciones y crecimiento personal. Manténgase informado sobre las últimas novedades del mundo de la psicología, la sexología y la terapia.</p>
+    </main>
+
+    <div id="tags-container">
+        <div class="tag active" onclick="toggleTag(this)" data-filter="all">
+            Todas las entradas
+        </div>
+        <div class="tag" onclick="toggleTag(this)" data-filter="salud-mental">
+            Salud mental
+        </div>
+        <div class="tag" onclick="toggleTag(this)" data-filter="relaciones">
+            Relaciones
+        </div>
+        <div class="tag" onclick="toggleTag(this)" data-filter="psicologia-infantil">
+            Psicología infantil
+        </div>
+        <div class="tag" onclick="toggleTag(this)" data-filter="terapia-sexual">
+            Terapia sexual
+        </div>
+        <div class="tag" onclick="toggleTag(this)" data-filter="bienestar">
+            Bienestar
+        </div>
+        <div class="tag" onclick="toggleTag(this)" data-filter="consejos">
+            Consejos
+        </div>
+    </div>
+
+    <section id="entry-container">
+        <div class="post" data-category="salud-mental bienestar">
+            <img class="blog-image" src="./images/blog/narcisismo.png">
+            <h2>Cuando se busca ser el centro de atención. Los peligros del narcisismo</h2>
+            <p>La ansiedad es uno de los problemas de salud mental más comunes. Conozca sus manifestaciones y técnicas efectivas para manejar los pensamientos y sentimientos de ansiedad.</p>
+        </div>
+
+        <div class="post" data-category="relaciones consejos">
+            <img class="blog-image" src="./images//blog/happy-couple.jpg">
+            <h2>Construyendo Relaciones más Fuertes a través de la Comunicación Efectiva</h2>
+            <p>La comunicación es la base de unas relaciones sanas. Descubre técnicas prácticas para mejorar tu conexión con tu pareja y seres queridos.</p>
+        </div>
+
+        <div class="post" data-category="terapia-sexual relaciones">
+            <img class="blog-image" src="./images/blog/seductive-mind.jpg">
+            <h2>Cuando el cerebro es tan atractivo como el cuerpo: El deseo mental</h2>
+            <p>La intervención temprana puede marcar una diferencia significativa en el desarrollo de un joven. Aprenda a detectar las señales y cuándo buscar ayuda profesional.</p>
+        </div>
+
+        <div class="post" data-category="psicologia-infantil bienestar">
+            <img class="blog-image" src="./images/blog/ansiedad.png">
+            <h2>Comprendiendo la ansiedad: Orígenes, causas, tratamientos y prevención</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit excepturi, fugit sequi fugiat quisquam expedita, vel esse inventore, voluptates qui laudantium.</p>
+        </div>
+    </section>
+
+    <section id="whatsapp">
+        <a href="https://wa.me/593939283303">
+            <img class="whatsapp-icon" src="./images/whatsapp.png">
+        </a>
+    </section>
+
     <script src="main.js" defer></script>
 </body>
 </html>
