@@ -707,7 +707,9 @@ textarea {
   border-radius: 12px;
   background-color: white;
   border: 1px solid #e5e7dd;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
   opacity: 0;
+  transition: all .3s ease;
   transform: translateY(30px);
   animation: fadeUp 0.8s ease-out forwards;
 }
@@ -727,6 +729,20 @@ textarea {
   object-fit: cover;
   width: 100%;
 }
+.services-back {
+  background-color: #fcfaed;
+  text-align: center;
+  margin: 0;
+  padding: 1rem;
+}
+.back-sub {
+  background-color: #e5e7dd;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 
 
 
@@ -1061,7 +1077,7 @@ textarea {
   #entry-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 3rem;
     padding: 0 5rem;
   }
   .post {
@@ -1070,6 +1086,17 @@ textarea {
   .post img {
     width: 100%;
     height: 200px;
+  }
+  .services-back {
+    padding: 4rem;
+  }
+  .back-sub {
+    margin: 0 10rem;
+    padding: 3rem;
+  }
+  .post h2, 
+  .post p {
+    padding: 1rem;
   }
 
 
