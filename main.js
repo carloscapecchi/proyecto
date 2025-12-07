@@ -76,11 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (firstElements.length === 0) return;
 
-  // 👉 1. Animar el PRIMER elemento al cargar la página
   const firstOnLoad = firstElements[0];
   firstOnLoad.classList.add("visible");
 
-  // 👉 2. Animar los demás solo con scroll (viewport)
   const others = Array.from(firstElements).slice(1);
 
   const observer = new IntersectionObserver((entries, obs) => {
@@ -91,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.15 // se anima cuando el 15% aparece en pantalla
+    threshold: 0.15
   });
 
   others.forEach(el => observer.observe(el));
@@ -129,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
-        observer.unobserve(entry.target); // se activa solo una vez
+        observer.unobserve(entry.target);
       }
     });
   });
